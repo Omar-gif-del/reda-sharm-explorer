@@ -1,15 +1,15 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { MessageCircle } from "lucide-react";
+import { MessageCircle, Star } from "lucide-react";
 import airportImage from "@/assets/airport-transfer.jpg";
-import safariImage from "@/assets/safari.jpg";
-import dahabImage from "@/assets/dahab.jpg";
-import rasMohamedImage from "@/assets/ras-mohamed.jpg";
+import safariImage from "@/assets/safari-authentic.jpg";
+import dahabImage from "@/assets/dahab-authentic.jpg";
+import rasMohamedImage from "@/assets/ras-mohamed-real.jpg";
 import stCatherineImage from "@/assets/st-catherine.jpg";
-import fishingImage from "@/assets/fishing.jpg";
+import fishingImage from "@/assets/fishing-real.jpg";
 import sohoImage from "@/assets/soho-square.jpg";
-import naamaBayImage from "@/assets/naama-bay.jpg";
-import oldMarketImage from "@/assets/old-market.jpg";
+import naamaBayImage from "@/assets/naama-twilight.jpg";
+import oldMarketImage from "@/assets/market-spices.jpg";
 import farshaCafeImage from "@/assets/farsha-cafe.jpg";
 
 interface ServiceCardProps {
@@ -18,9 +18,10 @@ interface ServiceCardProps {
   image: string;
   imageAlt: string;
   delay?: string;
+  featured?: boolean;
 }
 
-const ServiceCard = ({ title, description, image, imageAlt, delay = "0s" }: ServiceCardProps) => {
+const ServiceCard = ({ title, description, image, imageAlt, delay = "0s", featured = false }: ServiceCardProps) => {
   const handleWhatsApp = () => {
     const message = encodeURIComponent(`Hello Reda, I'm interested in ${title}`);
     window.open(`https://wa.me/201094466775?text=${message}`, "_blank");
@@ -28,29 +29,37 @@ const ServiceCard = ({ title, description, image, imageAlt, delay = "0s" }: Serv
 
   return (
     <Card 
-      className="overflow-hidden group hover:shadow-[var(--shadow-warm)] transition-all duration-300 animate-fade-in bg-card border-border"
+      className={`overflow-hidden group hover:shadow-[var(--shadow-warm)] transition-all duration-500 animate-fade-in bg-card border-border hover:-translate-y-2 ${featured ? 'md:col-span-2 lg:col-span-1' : ''}`}
       style={{ animationDelay: delay }}
     >
-      <div className="relative h-64 overflow-hidden">
+      <div className="relative h-72 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent z-10" />
         <img
           src={image}
           alt={imageAlt}
-          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 to-transparent" />
-        <h3 className="absolute bottom-4 left-4 text-2xl font-bold text-primary-foreground">
-          {title}
-        </h3>
+        {featured && (
+          <div className="absolute top-4 right-4 z-20 flex items-center gap-1 px-3 py-1 rounded-full bg-primary/90 backdrop-blur-sm">
+            <Star className="w-4 h-4 text-primary-foreground fill-primary-foreground" />
+            <span className="text-xs font-semibold text-primary-foreground">Popular</span>
+          </div>
+        )}
+        <div className="absolute bottom-0 left-0 right-0 p-6 z-20">
+          <h3 className="text-2xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">
+            {title}
+          </h3>
+        </div>
       </div>
       <div className="p-6">
-        <p className="text-muted-foreground mb-4 leading-relaxed">
+        <p className="text-muted-foreground mb-6 leading-relaxed">
           {description}
         </p>
         <Button 
           onClick={handleWhatsApp}
-          className="w-full bg-accent hover:bg-accent/90 text-accent-foreground"
+          className="w-full bg-accent hover:bg-accent/90 text-accent-foreground hover:scale-105 transition-all duration-300 group/btn"
         >
-          <MessageCircle className="w-4 h-4 mr-2" />
+          <MessageCircle className="w-4 h-4 mr-2 group-hover/btn:rotate-12 transition-transform" />
           Book via WhatsApp
         </Button>
       </div>
@@ -62,76 +71,86 @@ export const Services = () => {
   const services = [
     {
       title: "Airport Transfers",
-      description: "Comfortable and reliable transportation from Sharm El Sheikh Airport to your hotel. Professional service with modern, air-conditioned vehicles.",
+      description: "Luxurious and punctual transportation from Sharm El Sheikh Airport to your hotel. Modern, air-conditioned vehicles with professional drivers.",
       image: airportImage,
-      imageAlt: "Airport transfer service in Sharm El Sheikh"
+      imageAlt: "Airport transfer service in Sharm El Sheikh",
+      featured: true
     },
     {
-      title: "Desert Safari",
-      description: "Experience the thrill of the desert with exciting 4x4 safari adventures. Discover the stunning Sinai mountains and Bedouin culture.",
+      title: "Desert Safari Adventure",
+      description: "Immerse yourself in authentic Bedouin culture with thrilling 4x4 desert safaris. Experience traditional hospitality under the stars in the stunning Sinai mountains.",
       image: safariImage,
-      imageAlt: "Desert safari adventure in Sharm El Sheikh"
+      imageAlt: "Authentic Bedouin desert safari in Sinai",
+      featured: true
     },
     {
       title: "Dahab Day Trip",
-      description: "Visit the beautiful coastal town of Dahab, famous for its relaxed atmosphere, stunning beaches, and the world-famous Blue Hole diving spot.",
+      description: "Discover the laid-back charm of Dahab, featuring world-class diving at the Blue Hole, Bedouin cafes, and spectacular views across the Gulf of Aqaba.",
       image: dahabImage,
-      imageAlt: "Dahab beach and Blue Hole"
+      imageAlt: "Dahab Blue Hole and beach restaurants"
     },
     {
       title: "Ras Mohamed National Park",
-      description: "Explore Egypt's first national park with its incredible coral reefs, diverse marine life, and breathtaking underwater world.",
+      description: "Dive into Egypt's premier marine park with vibrant coral reefs teeming with tropical fish. Experience the underwater paradise of the Red Sea.",
       image: rasMohamedImage,
-      imageAlt: "Ras Mohamed National Park coral reefs"
+      imageAlt: "Ras Mohamed coral reef underwater",
+      featured: true
     },
     {
       title: "Saint Catherine Monastery",
-      description: "Journey to the historic Saint Catherine's Monastery at the foot of Mount Sinai. Experience ancient spiritual heritage and stunning mountain views.",
+      description: "Visit the sacred Mount Sinai and ancient Saint Catherine's Monastery. Witness breathtaking sunrise views from this historic pilgrimage site.",
       image: stCatherineImage,
       imageAlt: "Saint Catherine Monastery at Mount Sinai"
     },
     {
-      title: "Fishing Trips",
-      description: "Enjoy a peaceful day of fishing on the Red Sea. Perfect for both experienced anglers and beginners looking for a relaxing experience.",
+      title: "Fishing Expeditions",
+      description: "Experience traditional Red Sea fishing with local expertise. Perfect for both seasoned anglers and those seeking a peaceful day on the water.",
       image: fishingImage,
-      imageAlt: "Fishing trip on the Red Sea"
+      imageAlt: "Traditional fishing on the Red Sea"
     },
     {
       title: "Soho Square",
-      description: "Visit Sharm's modern entertainment hub featuring restaurants, cafes, shops, and nightlife. Experience the vibrant atmosphere of this popular destination.",
+      description: "Explore Sharm's vibrant entertainment complex with world-class restaurants, cafes, ice bar, and nightlife in a modern, lively atmosphere.",
       image: sohoImage,
-      imageAlt: "Soho Square entertainment complex"
+      imageAlt: "Soho Square entertainment hub"
     },
     {
-      title: "Naama Bay",
-      description: "Explore the famous Naama Bay promenade with its beautiful beaches, restaurants, and shopping. The heart of Sharm El Sheikh's tourism scene.",
+      title: "Naama Bay Promenade",
+      description: "Stroll along the iconic beachfront with palm-lined walkways, upscale dining, shopping, and stunning bay views at the heart of Sharm's tourism.",
       image: naamaBayImage,
-      imageAlt: "Naama Bay beach promenade"
+      imageAlt: "Naama Bay at twilight"
     },
     {
-      title: "Old Market",
-      description: "Experience authentic Egyptian culture at the traditional Old Market. Shop for spices, textiles, handicrafts, and souvenirs in a vibrant local atmosphere.",
+      title: "Old Market Bazaar",
+      description: "Immerse yourself in authentic Egyptian culture. Browse traditional handicrafts, aromatic spices, textiles, and souvenirs in a vibrant local atmosphere.",
       image: oldMarketImage,
-      imageAlt: "Traditional Old Market bazaar"
+      imageAlt: "Traditional spice market in Old Sharm"
     },
     {
-      title: "Farsha Cafe",
-      description: "Visit the iconic Farsha Cafe, one of Sharm's most unique venues. Enjoy stunning sunset views, traditional decor, and a magical atmosphere.",
+      title: "Farsha Cafe Experience",
+      description: "Unwind at the legendary Farsha Cafe with its unique traditional decor, stunning sunset views, and magical ambiance overlooking the Red Sea.",
       image: farshaCafeImage,
-      imageAlt: "Farsha Cafe with traditional Egyptian decor"
+      imageAlt: "Farsha Cafe with traditional Egyptian atmosphere"
     },
   ];
 
   return (
-    <section id="services" className="py-20 bg-muted/30">
-      <div className="container mx-auto px-4">
+    <section id="services" className="py-24 bg-background relative overflow-hidden">
+      {/* Decorative Background Elements */}
+      <div className="absolute top-20 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-20 left-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
+      
+      <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
-            Services & Tours
+          <div className="inline-block px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-4">
+            <span className="text-sm text-primary font-semibold">Premium Services</span>
+          </div>
+          <h2 className="text-5xl md:text-6xl font-bold mb-6 text-foreground">
+            Discover <span className="text-transparent bg-gradient-to-r from-primary to-accent bg-clip-text">Sharm El Sheikh</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Discover the wonders of Sharm El Sheikh with professional transportation 
-            and expertly guided tours
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            From thrilling desert adventures to serene underwater explorations, experience the very best 
+            of Egypt's Red Sea paradise with expertly guided tours
           </p>
         </div>
 

@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { ChevronDown } from "lucide-react";
-import heroImage from "@/assets/hero-sharm.jpg";
+import { ChevronDown, Sparkles } from "lucide-react";
+import heroImage from "@/assets/hero-night.jpg";
 
 export const Hero = () => {
   const scrollToServices = () => {
@@ -9,45 +9,81 @@ export const Hero = () => {
 
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image with Overlay */}
+      {/* Animated Background */}
       <div className="absolute inset-0">
         <img
           src={heroImage}
-          alt="Sharm El Sheikh Red Sea coastline"
-          className="w-full h-full object-cover"
+          alt="Sharm El Sheikh night view"
+          className="w-full h-full object-cover scale-105 animate-[scale_20s_ease-in-out_infinite]"
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-foreground/70 via-foreground/50 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/60 to-background" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,transparent_0%,rgba(0,0,0,0.6)_100%)]" />
+      </div>
+
+      {/* Floating Particles Effect */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {[...Array(20)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-1 h-1 bg-accent/30 rounded-full animate-float"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 5}s`,
+              animationDuration: `${3 + Math.random() * 4}s`,
+            }}
+          />
+        ))}
       </div>
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center">
-        <h1 className="text-5xl md:text-7xl font-bold mb-6 text-primary-foreground animate-fade-in-up">
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 backdrop-blur-sm mb-6 animate-fade-in">
+          <Sparkles className="w-4 h-4 text-primary animate-pulse" />
+          <span className="text-sm text-primary font-medium">Premium Tour Guide Services</span>
+        </div>
+        
+        <h1 className="text-6xl md:text-8xl font-bold mb-6 text-foreground animate-fade-in-up bg-gradient-to-br from-primary via-accent to-primary bg-clip-text text-transparent leading-tight">
           Reda Gabr
         </h1>
-        <p className="text-2xl md:text-3xl mb-4 text-primary-foreground/90 animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
-          Your Expert Tour Guide in Sharm El Sheikh
+        
+        <p className="text-2xl md:text-4xl mb-4 text-foreground/90 animate-fade-in-up font-playfair font-medium" style={{ animationDelay: "0.2s" }}>
+          Your Expert Tour Guide
         </p>
-        <p className="text-lg md:text-xl mb-8 text-primary-foreground/80 max-w-2xl mx-auto animate-fade-in-up" style={{ animationDelay: "0.4s" }}>
-          Experience the beauty of Egypt's Red Sea paradise with professional transportation
-          and personalized tour services
+        
+        <p className="text-lg md:text-xl mb-10 text-muted-foreground max-w-2xl mx-auto animate-fade-in-up leading-relaxed" style={{ animationDelay: "0.4s" }}>
+          Experience the magic of Sharm El Sheikh with premium transportation and personalized tours
         </p>
-        <Button
-          size="lg"
-          onClick={scrollToServices}
-          className="animate-scale-in bg-primary hover:bg-primary/90 text-primary-foreground shadow-[var(--shadow-warm)]"
-          style={{ animationDelay: "0.6s" }}
-        >
-          Explore Services
-        </Button>
+        
+        <div className="flex gap-4 justify-center animate-scale-in" style={{ animationDelay: "0.6s" }}>
+          <Button
+            size="lg"
+            onClick={scrollToServices}
+            className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-[var(--shadow-warm)] hover:scale-105 transition-all duration-300 text-lg px-8"
+          >
+            Explore Services
+          </Button>
+          <Button
+            size="lg"
+            variant="outline"
+            onClick={() => window.open("https://wa.me/201094466775", "_blank")}
+            className="border-accent text-accent hover:bg-accent hover:text-accent-foreground hover:scale-105 transition-all duration-300 text-lg px-8"
+          >
+            Contact Now
+          </Button>
+        </div>
       </div>
 
       {/* Scroll Indicator */}
       <button
         onClick={scrollToServices}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-float text-primary-foreground"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-float text-foreground/60 hover:text-primary transition-colors duration-300 group"
         aria-label="Scroll down"
       >
-        <ChevronDown className="w-8 h-8" />
+        <div className="flex flex-col items-center gap-2">
+          <span className="text-sm font-medium">Scroll Down</span>
+          <ChevronDown className="w-8 h-8 group-hover:translate-y-1 transition-transform" />
+        </div>
       </button>
     </section>
   );
