@@ -55,11 +55,11 @@ export const Hero = () => {
           Experience the magic of Sharm El Sheikh with premium transportation and personalized tours
         </p>
         
-        <div className="flex gap-4 justify-center animate-scale-in" style={{ animationDelay: "0.6s" }}>
+        <div className="flex flex-col md:flex-row gap-4 justify-center animate-scale-in w-full max-w-md md:max-w-none mx-auto px-4" style={{ animationDelay: "0.6s" }}>
           <Button
             size="lg"
             onClick={scrollToServices}
-            className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-[var(--shadow-warm)] hover:scale-105 transition-all duration-300 text-lg px-8"
+            className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-[var(--shadow-warm)] hover:scale-105 transition-all duration-300 text-base md:text-lg px-6 md:px-8 w-full md:w-auto"
           >
             Explore Services
           </Button>
@@ -67,7 +67,7 @@ export const Hero = () => {
             size="lg"
             variant="outline"
             onClick={() => window.location.href = "https://wa.me/201094466775?text=Hello%20Reda%2C%20I%27m%20interested%20in%20your%20tour%20services"}
-            className="border-accent text-accent hover:bg-accent hover:text-accent-foreground hover:scale-105 transition-all duration-300 text-lg px-8"
+            className="border-accent text-accent hover:bg-accent hover:text-accent-foreground hover:scale-105 transition-all duration-300 text-base md:text-lg px-6 md:px-8 w-full md:w-auto"
           >
             Contact Now
           </Button>
