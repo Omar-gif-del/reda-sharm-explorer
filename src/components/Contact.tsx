@@ -4,11 +4,11 @@ import { MessageCircle, Mail, MapPin, Phone, Clock, Send } from "lucide-react";
 
 export const Contact = () => {
   const handleWhatsApp = () => {
-    window.open("https://wa.me/201094466775", "_blank");
+    window.open("https://wa.me/201094466775?text=Hello%20Reda%2C%20I%27m%20interested%20in%20your%20tour%20services", "_blank");
   };
 
   const handleEmail = () => {
-    window.location.href = "mailto:redagabr@example.com";
+    window.open("mailto:reda.gabr.tours@gmail.com?subject=Tour%20Inquiry&body=Hello%20Reda%2C%0A%0AI%27m%20interested%20in%20learning%20more%20about%20your%20tour%20services%20in%20Sharm%20El%20Sheikh.", "_blank");
   };
 
   return (

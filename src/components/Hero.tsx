@@ -66,7 +66,7 @@ export const Hero = () => {
           <Button
             size="lg"
             variant="outline"
-            onClick={() => window.open("https://wa.me/201094466775", "_blank")}
+            onClick={() => window.open("https://wa.me/201094466775?text=Hello%20Reda%2C%20I%27m%20interested%20in%20your%20tour%20services", "_blank")}
             className="border-accent text-accent hover:bg-accent hover:text-accent-foreground hover:scale-105 transition-all duration-300 text-lg px-8"
           >
             Contact Now

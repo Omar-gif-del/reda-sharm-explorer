@@ -23,7 +23,7 @@ interface ServiceCardProps {
 
 const ServiceCard = ({ title, description, image, imageAlt, delay = "0s", featured = false }: ServiceCardProps) => {
   const handleWhatsApp = () => {
-    const message = encodeURIComponent(`Hello Reda, I'm interested in ${title}`);
+    const message = encodeURIComponent(`Hello Reda, I'm interested in booking: ${title}`);
     window.open(`https://wa.me/201094466775?text=${message}`, "_blank");
   };
 
