@@ -80,7 +80,7 @@ export const Hero = () => {
         className="absolute bottom-2 md:bottom-12 left-1/2 -translate-x-1/2 animate-float text-foreground/60 hover:text-primary transition-colors duration-300 group flex items-center justify-center"
         aria-label="Scroll down"
       >
-        <div className="flex flex-col items-center justify-center gap-2">
+        <div className="flex flex-col items-center justify-center gap-2 mr-2">
           <span className="text-sm font-medium text-center">Scroll Down</span>
           <ChevronDown className="w-8 h-8 group-hover:translate-y-1 transition-transform" />
         </div>
