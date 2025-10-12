@@ -77,10 +77,10 @@ export const Hero = () => {
       {/* Scroll Indicator */}
       <button
         onClick={scrollToServices}
-        className="absolute bottom-0 md:bottom-12 left-1/2 -translate-x-1/2 animate-float text-foreground/60 hover:text-primary transition-colors duration-300 group flex items-center justify-center"
+        className="absolute bottom-0 md:bottom-12 left-1/2 -translate-x-1/2 -ml-2 animate-float text-foreground/60 hover:text-primary transition-colors duration-300 group flex items-center justify-center"
         aria-label="Scroll down"
       >
-        <div className="flex flex-col items-center justify-center gap-2 mr-6">
+        <div className="flex flex-col items-center justify-center gap-2">
           <span className="text-sm font-medium text-center">Scroll Down</span>
           <ChevronDown className="w-8 h-8 group-hover:translate-y-1 transition-transform" />
         </div>
