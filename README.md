@@ -24,10 +24,10 @@ Follow these steps:
 
 ```sh
 # Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+git clone <your_git_url>
 
 # Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+cd <your_project_name>
 
 # Step 3: Install the necessary dependencies.
 npm i
@@ -60,14 +60,15 @@ This project is built with:
 - shadcn-ui
 - Tailwind CSS
 
-## How can I deploy this project?
+## Security Notice
 
-Simply open [Lovable](https://lovable.dev/projects/60015fc5-8675-4175-8b6f-06360c769054) and click on Share -> Publish.
+⚠️ **Important Security Information**
 
-## Can I connect a custom domain to my Lovable project?
+This repository follows strict security practices:
 
-Yes, you can!
+- **No Sensitive Data**: No sensitive data, API keys, passwords, or secrets are ever committed to this repository
+- **Environment Variables**: All sensitive configuration is stored in environment variables (`.env` files) which are excluded from version control
+- **Protected Files**: The `.gitignore` file is configured to exclude all sensitive files including `.env`, `*.secret`, `*.pem`, and certificate files
+- **License**: This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+If you find any security issues, please report them immediately through GitHub's security advisory feature.
