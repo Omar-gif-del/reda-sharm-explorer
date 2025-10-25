@@ -28,39 +28,37 @@ const ServiceCard = ({ title, description, image, imageAlt, delay = "0s", featur
   };
 
   return (
-    <Card 
+    <Card
       className={`overflow-hidden group hover:shadow-[var(--shadow-warm)] transition-all duration-500 animate-fade-in bg-card border-border hover:-translate-y-2 ${featured ? 'md:col-span-2 lg:col-span-1' : ''}`}
       style={{ animationDelay: delay }}
     >
       <div className="relative h-72 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent z-10" />
+        {featured && (
+          <div className="absolute top-4 right-4 z-20 flex items-center gap-1 bg-primary/90 backdrop-blur-sm text-primary-foreground px-3 py-1 rounded-full text-sm font-medium">
+            <Star className="w-4 h-4 fill-current" />
+            <span>Popular</span>
+          </div>
+        )}
         <img
           src={image}
           alt={imageAlt}
           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
         />
-        {featured && (
-          <div className="absolute top-4 right-4 z-20 flex items-center gap-1 px-3 py-1 rounded-full bg-primary/90 backdrop-blur-sm">
-            <Star className="w-4 h-4 text-primary-foreground fill-primary-foreground" />
-            <span className="text-xs font-semibold text-primary-foreground">Popular</span>
-          </div>
-        )}
-        <div className="absolute bottom-0 left-0 right-0 p-6 z-20">
-          <h3 className="text-2xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">
-            {title}
-          </h3>
-        </div>
       </div>
       <div className="p-6">
+        <h3 className="text-2xl font-bold mb-3 text-foreground group-hover:text-accent transition-colors">
+          {title}
+        </h3>
         <p className="text-muted-foreground mb-6 leading-relaxed">
           {description}
         </p>
-        <Button 
+        <Button
           onClick={handleWhatsApp}
-          className="w-full bg-accent hover:bg-accent/90 text-accent-foreground hover:scale-105 transition-all duration-300 group/btn"
+          className="w-full bg-secondary hover:bg-secondary/90 text-secondary-foreground shadow-md hover:shadow-lg transition-all duration-300 group/btn"
         >
-          <MessageCircle className="w-4 h-4 mr-2 group-hover/btn:rotate-12 transition-transform" />
-          Book via WhatsApp
+          <MessageCircle className="w-4 h-4 mr-2 group-hover/btn:animate-bounce" />
+          Book with Reda
         </Button>
       </div>
     </Card>
@@ -68,99 +66,95 @@ const ServiceCard = ({ title, description, image, imageAlt, delay = "0s", featur
 };
 
 export const Services = () => {
-  const services = [
-    {
-      title: "Airport Transfers",
-      description: "Luxurious and punctual transportation from Sharm El Sheikh Airport to your hotel. Modern, air-conditioned vehicles with professional drivers.",
-      image: airportImage,
-      imageAlt: "Airport transfer service in Sharm El Sheikh",
-      featured: true
-    },
+  const services: ServiceCardProps[] = [
     {
       title: "Desert Safari Adventure",
-      description: "Immerse yourself in authentic Bedouin culture with thrilling 4x4 desert safaris. Experience traditional hospitality under the stars in the stunning Sinai mountains.",
+      description: "Experience the thrill of quad biking and camel rides through the stunning Sinai Desert. Watch the sunset paint the dunes in golden hues while enjoying authentic Bedouin hospitality and traditional tea.",
       image: safariImage,
-      imageAlt: "Authentic Bedouin desert safari in Sinai",
-      featured: true
-    },
-    {
-      title: "Dahab Day Trip",
-      description: "Discover the laid-back charm of Dahab, featuring world-class diving at the Blue Hole, Bedouin cafes, and spectacular views across the Gulf of Aqaba.",
-      image: dahabImage,
-      imageAlt: "Dahab Blue Hole and beach restaurants"
+      imageAlt: "Desert safari with quad bikes and camels",
+      delay: "0ms",
+      featured: true,
     },
     {
       title: "Ras Mohamed National Park",
-      description: "Dive into Egypt's premier marine park with vibrant coral reefs teeming with tropical fish. Experience the underwater paradise of the Red Sea.",
+      description: "Explore Egypt's first national park, home to pristine coral reefs and diverse marine life. Snorkel in crystal-clear waters where the Red Sea meets the Gulf of Suez, discovering underwater wonders.",
       image: rasMohamedImage,
-      imageAlt: "Ras Mohamed coral reef underwater",
-      featured: true
+      imageAlt: "Ras Mohamed coral reefs",
+      delay: "100ms",
+      featured: true,
     },
     {
-      title: "Saint Catherine Monastery",
-      description: "Visit the sacred Mount Sinai and ancient Saint Catherine's Monastery. Witness breathtaking sunrise views from this historic pilgrimage site.",
+      title: "Dahab Day Trip",
+      description: "Visit the laid-back coastal town of Dahab, famous for the Blue Hole diving site and vibrant beachfront cafes. Experience world-class snorkeling and the unique atmosphere of this bohemian paradise.",
+      image: dahabImage,
+      imageAlt: "Dahab coastal town",
+      delay: "200ms",
+    },
+    {
+      title: "St. Catherine Monastery",
+      description: "Journey to one of the world's oldest working monasteries at the foot of Mount Sinai. Witness where Moses received the Ten Commandments and marvel at priceless religious artifacts and ancient manuscripts.",
       image: stCatherineImage,
-      imageAlt: "Saint Catherine Monastery at Mount Sinai"
+      imageAlt: "St. Catherine Monastery",
+      delay: "300ms",
     },
     {
-      title: "Fishing Expeditions",
-      description: "Experience traditional Red Sea fishing with local expertise. Perfect for both seasoned anglers and those seeking a peaceful day on the water.",
+      title: "Red Sea Fishing",
+      description: "Set sail on a traditional fishing boat for an unforgettable day on the Red Sea. Try your hand at catching local fish species while enjoying the stunning coastal views and warm Egyptian hospitality.",
       image: fishingImage,
-      imageAlt: "Traditional fishing on the Red Sea"
+      imageAlt: "Red Sea fishing experience",
+      delay: "400ms",
     },
     {
-      title: "Soho Square",
-      description: "Explore Sharm's vibrant entertainment complex with world-class restaurants, cafes, ice bar, and nightlife in a modern, lively atmosphere.",
+      title: "SOHO Square",
+      description: "Experience Sharm's premier entertainment complex with its dancing fountains, open-air cinema, ice rink, and diverse dining options. A perfect evening destination for families and couples alike.",
       image: sohoImage,
-      imageAlt: "Soho Square entertainment hub"
+      imageAlt: "SOHO Square entertainment",
+      delay: "500ms",
     },
     {
-      title: "Naama Bay Promenade",
-      description: "Stroll along the iconic beachfront with palm-lined walkways, upscale dining, shopping, and stunning bay views at the heart of Sharm's tourism.",
+      title: "Naama Bay Nightlife",
+      description: "Discover the vibrant heart of Sharm El Sheikh's nightlife. Stroll along the illuminated promenade, enjoy beachfront dining, and experience the electric atmosphere of bars and clubs.",
       image: naamaBayImage,
-      imageAlt: "Naama Bay at twilight"
+      imageAlt: "Naama Bay at night",
+      delay: "600ms",
     },
     {
-      title: "Old Market Bazaar",
-      description: "Immerse yourself in authentic Egyptian culture. Browse traditional handicrafts, aromatic spices, textiles, and souvenirs in a vibrant local atmosphere.",
+      title: "Old Market Sharm",
+      description: "Immerse yourself in authentic Egyptian culture at the bustling Old Market. Haggle for spices, textiles, and handicrafts while savoring traditional street food and aromatic shisha.",
       image: oldMarketImage,
-      imageAlt: "Traditional spice market in Old Sharm"
+      imageAlt: "Old Market spices and goods",
+      delay: "700ms",
     },
     {
-      title: "Farsha Cafe Experience",
-      description: "Unwind at the legendary Farsha Cafe with its unique traditional decor, stunning sunset views, and magical ambiance overlooking the Red Sea.",
+      title: "Farsha Cafe",
+      description: "Relax at this iconic clifftop cafe in Sharm's Old Town. Lounge on colorful cushions, sip refreshing drinks, and watch spectacular sunsets over the Red Sea in this unique bohemian setting.",
       image: farshaCafeImage,
-      imageAlt: "Farsha Cafe with traditional Egyptian atmosphere"
+      imageAlt: "Farsha Cafe sunset view",
+      delay: "800ms",
+    },
+    {
+      title: "Airport Transfer",
+      description: "Start your journey stress-free with reliable airport pickup and drop-off service. Enjoy comfortable, air-conditioned transportation with a friendly local driver who knows Sharm inside out.",
+      image: airportImage,
+      imageAlt: "Airport transfer service",
+      delay: "900ms",
     },
   ];
 
   return (
-    <section id="services" className="py-24 bg-background relative overflow-hidden">
-      {/* Decorative Background Elements */}
-      <div className="absolute top-20 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 left-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
-      
-      <div className="container mx-auto px-4 relative z-10">
+    <section id="services" className="py-24 px-4 bg-gradient-to-b from-background to-muted/20">
+      <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16 animate-fade-in">
-          <div className="inline-block px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-4">
-            <span className="text-sm text-primary font-semibold">Premium Services</span>
-          </div>
-          <h2 className="text-5xl md:text-6xl font-bold mb-6 text-foreground">
-            Discover <span className="text-transparent bg-gradient-to-r from-primary to-accent bg-clip-text">Sharm El Sheikh</span>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent">
+            Unforgettable Experiences
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            From thrilling desert adventures to serene underwater explorations, experience the very best 
-            of Egypt's Red Sea paradise with expertly guided tours
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            Discover the magic of Sharm El Sheikh with our carefully curated tours and activities
           </p>
         </div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-          {services.map((service, index) => (
-            <ServiceCard
-              key={service.title}
-              {...service}
-              delay={`${index * 0.1}s`}
-            />
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {services.map((service) => (
+            <ServiceCard key={service.title} {...service} />
           ))}
         </div>
       </div>
