@@ -12,7 +12,7 @@ export const Contact = () => {
   };
 
   return (
-    <section className="py-24 bg-background relative overflow-hidden">
+    <section id="contact" className="py-24 bg-background relative overflow-hidden">
       {/* Decorative Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/5 to-background" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-accent/5 rounded-full blur-3xl" />
@@ -34,144 +34,100 @@ export const Contact = () => {
 
           {/* Contact Cards Grid */}
           <div className="grid md:grid-cols-2 gap-6 mb-12">
-            <Card className="p-8 bg-gradient-to-br from-card to-card/50 backdrop-blur-sm hover:shadow-[var(--shadow-warm)] transition-all duration-500 animate-fade-in border-border group hover:-translate-y-2">
-              <div className="flex items-start gap-4 mb-6">
-                <div className="p-3 rounded-2xl bg-accent/10 group-hover:bg-accent/20 transition-colors">
-                  <MessageCircle className="w-8 h-8 text-accent" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-2xl font-bold mb-2 text-foreground">WhatsApp</h3>
-                  <p className="text-muted-foreground mb-4">
-                    Quick responses and instant communication
-                  </p>
-                  <p className="text-lg font-semibold text-foreground mb-4">
-                    +20 109 446 6775
-                  </p>
-                </div>
-              </div>
-              <Button 
-                onClick={handleWhatsApp}
-                className="w-full bg-accent hover:bg-accent/90 text-accent-foreground hover:scale-105 transition-all duration-300 group/btn"
-              >
-                <MessageCircle className="w-4 h-4 mr-2 group-hover/btn:rotate-12 transition-transform" />
-                Chat on WhatsApp
-              </Button>
-            </Card>
-
-            <Card className="p-8 bg-gradient-to-br from-card to-card/50 backdrop-blur-sm hover:shadow-[var(--shadow-warm)] transition-all duration-500 animate-fade-in border-border group hover:-translate-y-2" style={{ animationDelay: "0.1s" }}>
-              <div className="flex items-start gap-4 mb-6">
+            {/* WhatsApp Card */}
+            <Card className="p-8 bg-card/50 backdrop-blur border-border hover:border-accent/50 transition-all duration-300 group animate-fade-in [animation-delay:100ms]">
+              <div className="flex items-start gap-4">
                 <div className="p-3 rounded-2xl bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                  <Mail className="w-8 h-8 text-primary" />
+                  <MessageCircle className="w-6 h-6 text-primary" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-2xl font-bold mb-2 text-foreground">Email</h3>
-                  <p className="text-muted-foreground mb-4">
-                    For detailed inquiries and bookings
-                  </p>
-                  <p className="text-lg font-semibold text-foreground mb-4">
-                    Available for contact
-                  </p>
+                  <h3 className="text-xl font-semibold mb-2 text-foreground">WhatsApp</h3>
+                  <p className="text-muted-foreground mb-4">Quick responses, easy booking</p>
+                  <Button
+                    onClick={handleWhatsApp}
+                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground"
+                  >
+                    <MessageCircle className="w-4 h-4 mr-2" />
+                    Chat Now
+                  </Button>
                 </div>
               </div>
-              <Button 
-                onClick={handleEmail}
-                variant="outline"
-                className="w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground hover:scale-105 transition-all duration-300 group/btn"
-              >
-                <Send className="w-4 h-4 mr-2 group-hover/btn:translate-x-1 transition-transform" />
-                Send Email
-              </Button>
+            </Card>
+
+            {/* Email Card */}
+            <Card className="p-8 bg-card/50 backdrop-blur border-border hover:border-accent/50 transition-all duration-300 group animate-fade-in [animation-delay:200ms]">
+              <div className="flex items-start gap-4">
+                <div className="p-3 rounded-2xl bg-accent/10 group-hover:bg-accent/20 transition-colors">
+                  <Mail className="w-6 h-6 text-accent" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-semibold mb-2 text-foreground">Email</h3>
+                  <p className="text-muted-foreground mb-4">Detailed inquiries welcome</p>
+                  <Button
+                    onClick={handleEmail}
+                    variant="outline"
+                    className="w-full border-accent/50 hover:border-accent hover:bg-accent/10"
+                  >
+                    <Send className="w-4 h-4 mr-2" />
+                    Send Email
+                  </Button>
+                </div>
+              </div>
+            </Card>
+
+            {/* Phone Card */}
+            <Card className="p-8 bg-card/50 backdrop-blur border-border hover:border-primary/50 transition-all duration-300 group animate-fade-in [animation-delay:300ms]">
+              <div className="flex items-start gap-4">
+                <div className="p-3 rounded-2xl bg-secondary/10 group-hover:bg-secondary/20 transition-colors">
+                  <Phone className="w-6 h-6 text-secondary-foreground" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-semibold mb-2 text-foreground">Phone</h3>
+                  <p className="text-muted-foreground mb-2">Direct line to Reda</p>
+                  <a
+                    href="tel:+201094466775"
+                    className="text-lg font-mono text-accent hover:text-accent/80 transition-colors"
+                  >
+                    +20 109 446 6775
+                  </a>
+                </div>
+              </div>
+            </Card>
+
+            {/* Location Card */}
+            <Card className="p-8 bg-card/50 backdrop-blur border-border hover:border-primary/50 transition-all duration-300 group animate-fade-in [animation-delay:400ms]">
+              <div className="flex items-start gap-4">
+                <div className="p-3 rounded-2xl bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                  <MapPin className="w-6 h-6 text-primary" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-semibold mb-2 text-foreground">Location</h3>
+                  <p className="text-muted-foreground">Sharm El Sheikh</p>
+                  <p className="text-muted-foreground">South Sinai, Egypt</p>
+                </div>
+              </div>
             </Card>
           </div>
 
-          {/* Info Cards */}
-          <div className="grid md:grid-cols-2 gap-6 mb-12">
-            <Card className="p-8 bg-secondary/50 backdrop-blur-sm border-border animate-fade-in hover:border-primary/30 transition-all duration-300" style={{ animationDelay: "0.2s" }}>
-              <div className="flex items-center gap-4">
-                <div className="p-3 rounded-2xl bg-primary/10">
-                  <MapPin className="w-8 h-8 text-primary" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold mb-1 text-foreground">Location</h3>
-                  <p className="text-muted-foreground">
-                    Sharm El Sheikh, South Sinai, Egypt
-                  </p>
-                </div>
+          {/* Availability Notice */}
+          <Card className="p-8 bg-gradient-to-br from-primary/5 to-accent/5 border-accent/20 animate-fade-in [animation-delay:500ms]">
+            <div className="flex flex-col md:flex-row items-center gap-6 text-center md:text-left">
+              <div className="p-4 rounded-2xl bg-accent/10">
+                <Clock className="w-8 h-8 text-accent" />
               </div>
-            </Card>
-
-            <Card className="p-8 bg-secondary/50 backdrop-blur-sm border-border animate-fade-in hover:border-accent/30 transition-all duration-300" style={{ animationDelay: "0.3s" }}>
-              <div className="flex items-center gap-4">
-                <div className="p-3 rounded-2xl bg-accent/10">
-                  <Clock className="w-8 h-8 text-accent" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold mb-1 text-foreground">Availability</h3>
-                  <p className="text-muted-foreground">
-                    24/7 for airport transfers & tours
-                  </p>
-                </div>
+              <div className="flex-1">
+                <h3 className="text-2xl font-semibold mb-2 text-foreground">
+                  Available 24/7
+                </h3>
+                <p className="text-muted-foreground text-lg">
+                  I'm here to help you plan the perfect Sharm El Sheikh experience, 
+                  any time of day. Your adventure awaits!
+                </p>
               </div>
-            </Card>
-          </div>
-
-          {/* CTA Section */}
-          <Card className="p-10 bg-gradient-to-br from-primary/10 via-accent/5 to-primary/10 border-primary/20 animate-fade-in text-center" style={{ animationDelay: "0.4s" }}>
-            <Phone className="w-12 h-12 text-primary mx-auto mb-4" />
-            <h3 className="text-3xl font-bold mb-3 text-foreground">
-              Ready to Book Your Tour?
-            </h3>
-            <p className="text-lg text-muted-foreground mb-6 max-w-xl mx-auto">
-              Contact me now to customize your perfect Sharm El Sheikh experience
-            </p>
-            <Button 
-              size="lg"
-              onClick={handleWhatsApp}
-              className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-[var(--shadow-warm)] hover:scale-105 transition-all duration-300 text-lg px-8"
-            >
-              <MessageCircle className="w-5 h-5 mr-2" />
-              Start Planning Your Journey
-            </Button>
+            </div>
           </Card>
         </div>
       </div>
-
-      {/* Footer */}
-      <footer className="mt-24 pt-12 border-t border-border/50 relative z-10">
-        <div className="container mx-auto px-4">
-          <div className="max-w-5xl mx-auto">
-            <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-              <div className="text-center md:text-left">
-                <h4 className="text-2xl font-bold text-foreground mb-2 font-playfair">Reda Gabr</h4>
-                <p className="text-muted-foreground">
-                  Professional Tour Guide Services in Sharm El Sheikh
-                </p>
-              </div>
-              <div className="flex gap-4">
-                <Button
-                  variant="outline"
-                  size="icon"
-                  onClick={handleWhatsApp}
-                  className="hover:bg-accent hover:text-accent-foreground hover:border-accent transition-all duration-300"
-                >
-                  <MessageCircle className="w-5 h-5" />
-                </Button>
-                <Button
-                  variant="outline"
-                  size="icon"
-                  onClick={handleEmail}
-                  className="hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300"
-                >
-                  <Mail className="w-5 h-5" />
-                </Button>
-              </div>
-            </div>
-            <div className="mt-8 pt-8 border-t border-border/50 text-center text-muted-foreground text-sm">
-              <p>© {new Date().getFullYear()} Reda Gabr. All rights reserved.</p>
-            </div>
-          </div>
-        </div>
-      </footer>
     </section>
   );
 };
