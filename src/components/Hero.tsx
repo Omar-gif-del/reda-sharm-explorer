@@ -36,55 +36,45 @@ export const Hero = () => {
         ))}
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 text-center">
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 backdrop-blur-sm mb-6 animate-fade-in">
-          <Sparkles className="w-4 h-4 text-primary animate-pulse" />
-          <span className="text-sm text-primary font-medium">Premium Tour Guide Services</span>
+      {/* Hero Content */}
+      <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
+        <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 backdrop-blur-sm animate-fade-in">
+          <Sparkles className="w-4 h-4 text-accent" />
+          <span className="text-sm text-accent font-medium">Your Gateway to Red Sea Adventures</span>
         </div>
         
-        <h1 className="text-6xl md:text-8xl font-bold mb-6 text-foreground animate-fade-in-up bg-gradient-to-br from-primary via-accent to-primary bg-clip-text text-transparent leading-tight">
-          Reda Gabr
+        <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-foreground via-accent to-primary bg-clip-text text-transparent animate-fade-in [animation-delay:200ms]">
+          Discover Sharm El Sheikh
         </h1>
         
-        <p className="text-2xl md:text-4xl mb-4 text-foreground/90 animate-fade-in-up font-playfair font-medium" style={{ animationDelay: "0.2s" }}>
-          Your Expert Tour Guide
+        <p className="text-xl md:text-2xl mb-8 text-muted-foreground max-w-2xl mx-auto animate-fade-in [animation-delay:400ms]">
+          Experience the magic of Egypt's premier resort destination with personalized tours and unforgettable adventures
         </p>
         
-        <p className="text-lg md:text-xl mb-10 text-muted-foreground max-w-2xl mx-auto animate-fade-in-up leading-relaxed" style={{ animationDelay: "0.4s" }}>
-          Experience the magic of Sharm El Sheikh with premium transportation and personalized tours
-        </p>
-        
-        <div className="flex flex-col md:flex-row gap-4 justify-center animate-scale-in w-full max-w-md md:max-w-none mx-auto px-4" style={{ animationDelay: "0.6s" }}>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in [animation-delay:600ms]">
           <Button
-            size="lg"
             onClick={scrollToServices}
-            className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-[var(--shadow-warm)] hover:scale-105 transition-all duration-300 text-base md:text-lg px-6 md:px-8 w-full md:w-auto"
+            size="lg"
+            className="group bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all duration-300"
           >
-            Explore Services
+            Explore Tours
+            <ChevronDown className="ml-2 w-4 h-4 group-hover:translate-y-1 transition-transform" />
           </Button>
           <Button
+            onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
             size="lg"
             variant="outline"
-            onClick={() => window.location.href = "https://wa.me/201094466775?text=Hello%20Reda%2C%20I%27m%20interested%20in%20your%20tour%20services"}
-            className="border-accent text-accent hover:bg-accent hover:text-accent-foreground hover:scale-105 transition-all duration-300 text-base md:text-lg px-6 md:px-8 w-full md:w-auto"
+            className="border-accent/50 hover:border-accent hover:bg-accent/10 backdrop-blur-sm"
           >
-            Contact Now
+            Contact Reda
           </Button>
         </div>
       </div>
 
       {/* Scroll Indicator */}
-      <button
-        onClick={scrollToServices}
-        className="absolute bottom-0 md:bottom-12 left-1/2 -translate-x-1/2 -ml-2 animate-float text-foreground/60 hover:text-primary transition-colors duration-300 group flex items-center justify-center"
-        aria-label="Scroll down"
-      >
-        <div className="flex flex-col items-center justify-center gap-2">
-          <span className="text-sm font-medium text-center">Scroll Down</span>
-          <ChevronDown className="w-8 h-8 group-hover:translate-y-1 transition-transform" />
-        </div>
-      </button>
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+        <ChevronDown className="w-6 h-6 text-accent" />
+      </div>
     </section>
   );
 };
